@@ -112,40 +112,6 @@ if($public_id_jabatan == 2)
 </div>
 </div>
 
-<div id="Modal3" class="modal fade" aria-hidden="true">
-<div class="modal-dialog modal-md" >
-	
-	<div class="modal-content">
-	  <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title" id="judul3"></h4>
-	  </div>
-	  <div class="modal-body row">
-	  
-		  <input type="hidden" id="id_linen_receive" value="">
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Packing code</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="packing_code" id="packing_code" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Packing date</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="date" name="packing_date" id="packing_date" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Packed by</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="packed_by" id="packed_by" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel code</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_code" id="hotel_code" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel name</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_name" id="hotel_name" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Total</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="total" id="total" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Status</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="status" id="status" class="form-control"/></div>
-
-		  
-
-		 </div>
-	</div>
-
-</div>
-</div>
-
 <script type="text/javascript" class="init">
 var token = document.querySelector("meta[property='rtoken']").getAttribute("content");
 
@@ -251,8 +217,8 @@ function Lihatlinen(id_linen_receive, packing_code, packing_date, packed_by, hot
 	$('#hotel_name').val(hotel_name);
 	$('#total').val(total);
 	$('#status').val(status);
-	$("#judul3").html("Lihat Menu ");
-	$("#Modal3").modal('show');
+	$("#judul2").html("Lihat Menu ");
+	$("#Modal2").modal('show');
 }
 
 $('#box2').text('<?=$box2?>');

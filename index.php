@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta property="rtoken" content="<?php print $_SESSION['rtoken'] ?>"/>
-  <title>HOTEL</title>
+  <title>HOTEL | LINEN</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -80,7 +80,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>HOTEL </b></span>
+      <span class="logo-lg"><b>HOTEL | LINEN</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

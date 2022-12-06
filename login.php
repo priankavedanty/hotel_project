@@ -13,7 +13,7 @@ if(!isset($_SESSION)) {session_start();}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HOTEL</title>
+  <title>HOTEL | LINEN</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@ if(!isset($_SESSION)) {session_start();}
 <body class="hold-transition login-page" style="background-color: silver;"> <!-- Background colour -->
 <div class="login-box">
   <div class="login-logo">
-    <a href="login.php"><b>HOTEL</b> MANAGEMENT SYSTEM</a>
+    <a href="login.php"><b>HOTEL | LINEN</b> MANAGEMENT SYSTEM</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

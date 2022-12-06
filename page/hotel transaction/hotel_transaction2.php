@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 2) 
+if($public_id_jabatan == 3) 
 
 {
 
@@ -25,6 +25,8 @@ if($public_id_jabatan == 2)
 									<td >No</td>
 									<td >Train code</td>
 									<td >Train date</td>
+									<td >Hotel code</td>
+									<td >Hotel name</td>
 									<td >Clean</td>
 									<td >Soil</td>
 									<td >Stain</td>
@@ -48,6 +50,8 @@ if($public_id_jabatan == 2)
 									?><td align="center"><?=$no?></td><?php
 									?><td><?=$row['train_code'] ?></td><?php
 									?><td><?=$row['train_date'] ?></td><?php
+									?><td><?=$row['hotel_code'] ?></td><?php
+									?><td><?=$row['hotel_name'] ?></td><?php
 									?><td><?=$row['clean'] ?></td><?php
 									?><td><?=$row['soil'] ?></td><?php
 									?><td><?=$row['stain'] ?></td><?php
@@ -57,7 +61,7 @@ if($public_id_jabatan == 2)
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 									
 											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_hotel_transaction']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 									</td>
@@ -170,7 +174,6 @@ $('#btn_save').on('click', function (e) {
 	}
 });
 
-
 function Hapusmenu(id){
 	swal({
 	  title: "",
@@ -214,7 +217,6 @@ function Edithotel(id_hotel_transaction, train_code, train_date, clean, soil, st
 	$("#judul").html("Edit Menu ");
 	$("#Modal").modal('show');
 }
-
 
 $('#box1').text('<?=$box1?>');
 </script>
