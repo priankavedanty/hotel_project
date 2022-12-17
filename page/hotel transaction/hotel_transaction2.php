@@ -14,7 +14,7 @@ if($public_id_jabatan == 3)
         <div class="card-header">
           <h3 class="card-title"><b> DATA HOTEL TRANSACTION </b></h3>
 
-          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd()" ?<?php if($public_id_jabatan != 2){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
+          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd()" ?<?php if($public_id_jabatan != 3){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
 
         </div><br>
         <!-- /.box-header -->
@@ -32,7 +32,7 @@ if($public_id_jabatan == 3)
 									<td >Stain</td>
 									<td >Torn</td>
 									<td >Tran status</td>
-									<td >Delivery status</td>
+									<td >Delivery</td>
 									<td >Action</td>
 								</tr>
             </thead>
@@ -61,9 +61,11 @@ if($public_id_jabatan == 3)
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
+
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihathotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_hotel_transaction']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_hotel_transaction']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									</td>
 								</tr><?php
 							} $box1 = $no;
@@ -95,6 +97,10 @@ if($public_id_jabatan == 3)
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="train_code" id="train_code" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Train date</div>
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="date" name="train_date" id="train_date" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel code</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_code" id="hotel_code" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel name</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_name" id="hotel_name" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Clean</div>
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="clean" id="clean" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Soil</div>
@@ -129,6 +135,8 @@ $('#btn_save').on('click', function (e) {
 	var id_hotel_transaction = $('#id_hotel_transaction').val(); 
 	var train_code = $('#train_code').val(); 
 	var train_date = $('#train_date').val();
+	var hotel_code = $('#hotel_code').val(); 
+	var hotel_name = $('#hotel_name').val(); 
 	var clean = $('#clean').val();
 	var soil = $('#soil').val();
 	var stain = $('#stain').val();
@@ -138,13 +146,13 @@ $('#btn_save').on('click', function (e) {
 
 	if(id_hotel_transaction == '')
 	{
-		if(train_code == "" || train_date == "" || clean == "" || soil == "" || stain == "" || torn == "" || tran_status == "" || delivery_status == "")
+		if(train_code == "" || train_date == "" || hotel_code == "" || hotel_name == "" || clean == "" || soil == "" || stain == "" || torn == "" || tran_status == "" || delivery_status == "")
 		{
 			swal({icon: 'error',title: 'Oops...',text: "Mohon isi semua data!",})
 		}
 		else
 		{	
-			$.post("func/func_administrator.php",{token:token, id_hotel_transaction:'', train_code:train_code, train_date:train_date, clean:clean, soil:soil, stain:stain, torn:torn, tran_status:tran_status, delivery_status:delivery_status, kode:'hotel_transaction'},
+			$.post("func/func_administrator.php",{token:token, id_hotel_transaction:'', train_code:train_code, train_date:train_date, hotel_code:hotel_code, hotel_name:hotel_name, clean:clean, soil:soil, stain:stain, torn:torn, tran_status:tran_status, delivery_status:delivery_status, kode:'hotel_transaction'},
 			function(data)
 			{
 				if(data == 1)
@@ -160,7 +168,7 @@ $('#btn_save').on('click', function (e) {
 	}
 	else
 	{
-		$.post("func/func_administrator.php",{token:token, id_hotel_transaction:id_hotel_transaction, train_code:train_code, train_date:train_date, clean:clean, soil:soil, stain:stain, torn:torn, tran_status:tran_status, delivery_status:delivery_status, kode:'hotel_transaction'},
+		$.post("func/func_administrator.php",{token:token, id_hotel_transaction:id_hotel_transaction, train_code:train_code, train_date:train_date, hotel_code:hotel_code, hotel_name:hotel_name, clean:clean, soil:soil, stain:stain, torn:torn, tran_status:tran_status, delivery_status:delivery_status, kode:'hotel_transaction'},
 		function(data){
 			if(data == 1)
 			{				
@@ -204,10 +212,28 @@ function ShowAdd(){
 	$("#Modal").modal('show');
 }
 
-function Edithotel(id_hotel_transaction, train_code, train_date, clean, soil, stain, torn, tran_status, delivery_status){
+function Edithotel(id_hotel_transaction, train_code, train_date, hotel_code, hotel_name, clean, soil, stain, torn, tran_status, delivery_status){
 	$('#id_hotel_transaction').val(id_hotel_transaction);
 	$('#train_code').val(train_code);
 	$('#train_date').val(train_date);
+	$('#hotel_code').val(hotel_code); 
+	$('#hotel_name').val(hotel_name); 
+	$('#clean').val(clean);
+	$('#soil').val(soil);
+	$('#stain').val(stain);
+	$('#torn').val(torn);
+	$('#tran_status').val(tran_status);
+	$('#delivery_status').val(delivery_status);
+	$("#judul").html("Edit Menu ");
+	$("#Modal").modal('show');
+}
+
+function Lihathotel(id_hotel_transaction, train_code, train_date, hotel_code, hotel_name, clean, soil, stain, torn, tran_status, delivery_status){
+	$('#id_hotel_transaction').val(id_hotel_transaction);
+	$('#train_code').val(train_code);
+	$('#train_date').val(train_date);
+	$('#hotel_code').val(hotel_code); 
+	$('#hotel_name').val(hotel_name); 
 	$('#clean').val(clean);
 	$('#soil').val(soil);
 	$('#stain').val(stain);
