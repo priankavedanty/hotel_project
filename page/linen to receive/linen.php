@@ -174,7 +174,7 @@ function Hapus(id_linen_receive){
 	})
 	.then(willConfirm => {
 	  if (willConfirm) {
-	    $.post("func/func_administrator.php",{token:token, id_linen_receive:id_linen_receive, kode:'del_linen'},
+	    $.post("func/func_administrator.php",{token:token, id_linen_receive:id_linen_receive, kode:'del_linen_receive'},
 			function(data)
 			{
 				if(data == 1)

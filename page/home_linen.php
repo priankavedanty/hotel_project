@@ -115,7 +115,7 @@ if($public_id_jabatan == 3)
 
         <div class="info-box-content">
           <span class="info-box-text">TOTAL LINEN TEMPLATES</span>
-          <a href="index.php?h=total_template">More info</a>
+          <a href="index.php?h=template">More info</a>
         </div>
         <!-- /.info-box-content -->
       </div>

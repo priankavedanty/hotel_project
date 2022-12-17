@@ -183,7 +183,7 @@ function Hapusmenu(id){
 		})
 		.then(willConfirm => {
 		  if (willConfirm) {
-		   	$.post("func/func_administrator.php",{token:token, id_hotel_transaction:id, kode:'del_hotel'},
+		   	$.post("func/func_administrator.php",{token:token, id_hotel_transaction:id, kode:'del_hotel_transaction'},
 				function(data){
 				if(data == 1)
 				{				
