@@ -129,7 +129,7 @@ $('#btn_save').on('click', function (e) {
 		}
 		else
 		{	
-			$.post("func/func_administrator.php",{token:token, id_register_history:'', register_date:register_date, template_code:template_code, template_name:template_name, linen_type:linen_type, total:total, id_jabatan:id_jabatan, kode:'register_history'},
+			$.post("func/func_administrator.php",{token:token, id_register_history:'', register_date:register_date, template_code:template_code, template_name:template_name, linen_type:linen_type, total:total, id_jabatan:'', kode:'register_history'},
 			function(data)
 			{
 				if(data == 1)
