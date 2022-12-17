@@ -29,7 +29,7 @@ if(isset($_GET['h']))
 	else if($page == 'total_driver'){include 'page/total driver/total_driver.php';}
 	else if($page == 'total_hotel'){include 'page/total hotel/total_hotel.php';}
 	else if($page == 'total_linen'){include 'page/total linen/total_linen.php';}
-	else if($page == 'total_template'){include 'page/total linen template/total_template.php';}
+	else if($page == 'template'){include 'page/template/template.php';}
 	else if($page == 'total_register'){include 'page/total register linen/total_register.php';}
 
 	else{include '404.php';}

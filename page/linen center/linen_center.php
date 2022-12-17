@@ -11,7 +11,7 @@ if($public_id_jabatan == 3)
       <div class="card">
       <div class="box" style="border-top:#1E58C1 4px solid; padding: 20px;">
         <div class="card-header">
-          <h3 class="card-title"><b> DATA LINEN TO RECEIVE </b></h3>
+          <h3 class="card-title"><b> DATA LINEN CENTER </b></h3>
 
           <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ?<?php if($public_id_jabatan != 2){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
 
@@ -22,21 +22,20 @@ if($public_id_jabatan == 3)
             <thead>
 		            <tr>
 									<td >No</td>
-									<td >Packing code</td>
-									<td >Packing date</td>
-									<td >Packed by</td>
-									<td >Hotel code</td>
-									<td >Hotel name</td>
-									<td >Total</td>
-									<td >Status</td>
+									<td >Code</td>
+									<td >Name</td>
+									<td >Address</td>
+									<td >Phone</td>
+									<td >Email</td>
+									<td >Description</td>
 									<td >Action</td>
 								</tr>
             </thead>
             <tbody>
             	<?php $no2=0;
-									$query = "SELECT * from tb_linen_receive
-									inner join tb_jabatan on tb_linen_receive.id_jabatan = tb_jabatan.id_jabatan
-									where id_linen_receive order by id_linen_receive ASC";
+									$query = "SELECT * from tb_linen_center_detail
+									inner join tb_jabatan on tb_linen_center_detail.id_jabatan = tb_jabatan.id_jabatan
+									where id_linen_center_detail order by id_linen_center_detail ASC";
 									$result = mysqli_query($conn, $query);
 									while($row = mysqli_fetch_assoc($result)) 
 							{
@@ -44,21 +43,20 @@ if($public_id_jabatan == 3)
 								$no2++;
 								?><tr><?php
 									?><td align="center"><?=$no2?></td><?php
-									?><td><?=$row['packing_code'] ?></td><?php
-									?><td><?=$row['packing_date'] ?></td><?php
-									?><td><?=$row['packed_by'] ?></td><?php
-									?><td><?=$row['hotel_code'] ?></td><?php
-									?><td><?=$row['hotel_name'] ?></td><?php
-									?><td><?=$row['total']?></td><?php
-									?><td><?=$row['status'] ?></td><?php
+									?><td><?=$row['code'] ?></td><?php
+									?><td><?=$row['name'] ?></td><?php
+									?><td><?=$row['address'] ?></td><?php
+									?><td><?=$row['phone'] ?></td><?php
+									?><td><?=$row['email'] ?></td><?php
+									?><td><?=$row['description']?></td><?php
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Editlinen('<?=$row['id_linen_receive']?>','<?=$row['packing_code']?>', '<?=$row['packing_date']?>', '<?=$row['packed_by']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['total']?>', '<?=$row['status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_linen_center_detail']?>','<?=$row['code']?>', '<?=$row['name']?>', '<?=$row['address']?>', '<?=$row['phone']?>', '<?=$row['email']?>', '<?=$row['description']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 
-											<button class="btn btn-success" title="Lihat Data" onclick="Lihatlinen('<?=$row['id_linen_receive']?>','<?=$row['packing_code']?>', '<?=$row['packing_date']?>', '<?=$row['packed_by']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['total']?>', '<?=$row['status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_linen_center_detail']?>','<?=$row['code']?>', '<?=$row['name']?>', '<?=$row['address']?>', '<?=$row['phone']?>', '<?=$row['email']?>', '<?=$row['description']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_linen_receive']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_linen_center_detail']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 									</td>
 								</tr><?php
 							} $box2 = $no2;
@@ -85,22 +83,19 @@ if($public_id_jabatan == 3)
 	  </div>
 	  <div class="modal-body row">
 	  
-		  <input type="hidden" id="id_linen_receive" value="">
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Packing code</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="packing_code" id="packing_code" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Packing date</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="date" name="packing_date" id="packing_date" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Packed by</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="packed_by" id="packed_by" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel code</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_code" id="hotel_code" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel name</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_name" id="hotel_name" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Total</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="total" id="total" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Status</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="status" id="status" class="form-control"/></div>
-
+		  <input type="hidden" id="id_linen_center_detail" value="">
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Code</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="code" id="code" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Name</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="name" id="name" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Address</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="address" id="address" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Phone</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="phone" id="phone" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Email</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="email" id="email" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Description</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="description" id="description" class="form-control"/></div>
 		  
 
 		 </div>
@@ -116,29 +111,28 @@ if($public_id_jabatan == 3)
 var token = document.querySelector("meta[property='rtoken']").getAttribute("content");
 
 $('#btn_save').on('click', function (e) {
-	var id_linen_receive = $('#id_linen_receive').val(); 
-	var packing_code = $('#packing_code').val(); 
-	var packing_date = $('#packing_date').val();
-	var packed_by = $('#packed_by').val();
-	var hotel_code = $('#hotel_code').val();
-	var hotel_name = $('#hotel_name').val();
-	var total = $('#total').val();
-	var status = $('#status').val();
+	var id_linen_center_detail = $('#id_linen_center_detail').val(); 
+	var code = $('#code').val(); 
+	var name = $('#name').val();
+	var address = $('#address').val();
+	var phone = $('#phone').val();
+	var email = $('#email').val();
+	var description = $('#description').val();
 
-	if(id_linen_receive == '')
+	if(id_linen_center_detail == '')
 	{
-		if(packing_code == "" || packing_date == "" || packed_by == "" || hotel_code == "" || hotel_name == "" || total == "" || status == "" )
+		if(code == "" || name == "" || address == "" || phone == "" || email == "" || description == "")
 		{
 			swal({icon: 'error',title: 'Oops...',text: "Mohon isi semua data!",})
 		}
 		else
 		{	
-			$.post("func/func_administrator.php",{token:token, id_linen_receive:'', packing_code:packing_code, packing_date:packing_date, packed_by:packed_by, hotel_code:hotel_code, hotel_name:hotel_name, total:total, status:status,kode:'linen_receive'},
+			$.post("func/func_administrator.php",{token:token, id_linen_center_detail:'', code:code, name:name, address:address, phone:phone, email:email, description:description, kode:'linen_center'},
 			function(data)
 			{
 				if(data == 1)
 				{				
-					swal({text: "Data linen receive berhasil disimpan!", icon: 'success',}).then((result) => {window.location.reload();})
+					swal({text: "Data linen center berhasil disimpan!", icon: 'success',}).then((result) => {window.location.reload();})
 				}
 				else
 				{
@@ -149,11 +143,11 @@ $('#btn_save').on('click', function (e) {
 	}
 		else
 	{
-			$.post("func/func_administrator.php",{token:token, id_linen_receive:id_linen_receive, packing_code:packing_code, packing_date:packing_date, packed_by:packed_by, hotel_code:hotel_code, hotel_name:hotel_name, total:total, status:status, kode:'linen_receive'},
+			$.post("func/func_administrator.php",{token:token, id_linen_center_detail:id_linen_center_detail, code:code, name:name, address:address, phone:phone, email:email, description:description, kode:'linen_center'},
 		function(data){
 			if(data == 1)
 			{				
-				swal({text: "Data linen receive berhasil diperbaharui!",icon: 'success',}).then((result) => {window.location.reload();})
+				swal({text: "Data linen center berhasil diperbaharui!",icon: 'success',}).then((result) => {window.location.reload();})
 			}
 			else
 			{
@@ -164,22 +158,22 @@ $('#btn_save').on('click', function (e) {
 	
 });
 
-function Hapus(id_linen_receive){
+function Hapus(id_linen_center_detail){
 	swal({
   title: "",
-  text: "Yakin ingin menghapus data linen receive ini?",
+  text: "Yakin ingin menghapus data linen center ini?",
   icon: "info",
   dangerMode: true,
   buttons: ["Batal", "Hapus"],
 	})
 	.then(willConfirm => {
 	  if (willConfirm) {
-	    $.post("func/func_administrator.php",{token:token, id_linen_receive:id_linen_receive, kode:'del_linen'},
+	    $.post("func/func_administrator.php",{token:token, id_linen_center_detail:id_linen_center_detail, kode:'del_linen_center'},
 			function(data)
 			{
 				if(data == 1)
 				{				
-					swal({text: "Data linen receive berhasil dihapus!",icon: 'success',}).then((result) => {window.location.reload();})
+					swal({text: "Data linen center berhasil dihapus!",icon: 'success',}).then((result) => {window.location.reload();})
 				}
 				else
 				{
@@ -195,28 +189,26 @@ function ShowAdd2(){
 	$("#Modal2").modal('show');
 }
 
-function Editlinen(id_linen_receive, packing_code, packing_date, packed_by, hotel_code, hotel_name, total, status){
-	$('#id_linen_receive').val(id_linen_receive);
-	$('#packing_code').val(packing_code);
-	$('#packing_date').val(packing_date);
-	$('#packed_by').val(packed_by);
-	$('#hotel_code').val(hotel_code);
-	$('#hotel_name').val(hotel_name);
-	$('#total').val(total);
-	$('#status').val(status);
+function Editdata(id_linen_center_detail, code, name, address, phone, email, description){
+	$('#id_linen_center_detail').val(id_linen_center_detail);
+	$('#code').val(code);
+	$('#name').val(name);
+	$('#address').val(address);
+	$('#phone').val(phone);
+	$('#email').val(email);
+	$('#description').val(description);
 	$("#judul2").html("Edit Menu ");
 	$("#Modal2").modal('show');
 }
 
-function Lihatlinen(id_linen_receive, packing_code, packing_date, packed_by, hotel_code, hotel_name, total, status){
-	$('#id_linen_receive').val(id_linen_receive);
-	$('#packing_code').val(packing_code);
-	$('#packing_date').val(packing_date);
-	$('#packed_by').val(packed_by);
-	$('#hotel_code').val(hotel_code);
-	$('#hotel_name').val(hotel_name);
-	$('#total').val(total);
-	$('#status').val(status);
+function Lihatdata(id_linen_center_detail, code, name, address, phone, email, description){
+	$('#id_linen_center_detail').val(id_linen_center_detail);
+	$('#code').val(code);
+	$('#name').val(name);
+	$('#address').val(address);
+	$('#phone').val(phone);
+	$('#email').val(email);
+	$('#description').val(description);
 	$("#judul2").html("Lihat Menu ");
 	$("#Modal2").modal('show');
 }
