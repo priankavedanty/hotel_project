@@ -58,6 +58,8 @@ if($public_id_jabatan == 2)
 									?><td align="center"> 
 
 											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihathotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									
 											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_hotel_transaction']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 									</td>
@@ -215,6 +217,21 @@ function Edithotel(id_hotel_transaction, train_code, train_date, clean, soil, st
 	$("#Modal").modal('show');
 }
 
+function Lihathotel(id_hotel_transaction, train_code, train_date, hotel_code, hotel_name, clean, soil, stain, torn, tran_status, delivery_status){
+	$('#id_hotel_transaction').val(id_hotel_transaction);
+	$('#train_code').val(train_code);
+	$('#train_date').val(train_date);
+	$('#hotel_code').val(hotel_code); 
+	$('#hotel_name').val(hotel_name); 
+	$('#clean').val(clean);
+	$('#soil').val(soil);
+	$('#stain').val(stain);
+	$('#torn').val(torn);
+	$('#tran_status').val(tran_status);
+	$('#delivery_status').val(delivery_status);
+	$("#judul").html("Edit Menu ");
+	$("#Modal").modal('show');
+}
 
 $('#box1').text('<?=$box1?>');
 </script>
