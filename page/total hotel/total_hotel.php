@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 3)
+if($public_id_jabatan == 2 || $public_id_jabatan == 3 || $public_id_jabatan == 4 || $public_id_jabatan == 5 || $public_id_jabatan == 6)
 
 {
 
@@ -13,7 +13,7 @@ if($public_id_jabatan == 3)
         <div class="card-header">
           <h3 class="card-title"><b> DATA HOTEL </b></h3>
 
-          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ?<?php if($public_id_jabatan != 2){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
+          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ><i class="fa fa-plus-circle"></i> Tambah data </button>
 
         </div><br>
         <!-- /.box-header -->
@@ -52,11 +52,11 @@ if($public_id_jabatan == 3)
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_hotel']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['laundry_plant']?>', '<?=$row['contact_name']?>', '<?=$row['phone']?>', '<?=$row['email']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_hotel']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['laundry_plant']?>', '<?=$row['contact_name']?>', '<?=$row['phone']?>', '<?=$row['email']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
 
-											<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_hotel']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['laundry_plant']?>', '<?=$row['contact_name']?>', '<?=$row['phone']?>', '<?=$row['email']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_hotel']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['laundry_plant']?>', '<?=$row['contact_name']?>', '<?=$row['phone']?>', '<?=$row['email']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_hotel']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_hotel']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									</td>
 								</tr><?php
 							} $box2 = $no2;

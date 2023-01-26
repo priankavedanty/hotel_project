@@ -10,9 +10,9 @@ if(isset($_GET['h']))
 	else if($page == 'home_linen'){include 'page/home_linen.php';}
 	
 	else if($page == 'clean'){include 'page/clean linen/clean.php';}
-	else if($page == 'discard_linen'){include 'page/discard linen/discard.php';}
+	else if($page == 'discard'){include 'page/discard linen/discard.php';}
 	else if($page == 'linen_aging'){include 'page/linen aging/linen_aging.php';}
-	else if($page == 'linen'){include 'page/linen to receive/linen.php';}
+	else if($page == 'linen_receive'){include 'page/linen to receive/linen_receive.php';}
 	else if($page == 'hotel_transaction'){include 'page/hotel transaction/hotel_transaction.php';}
 	else if($page == 'hotel_transaction2'){include 'page/hotel transaction/hotel_transaction2.php';}
 	
@@ -25,7 +25,11 @@ if(isset($_GET['h']))
 	else if($page == 'linen_aging15'){include 'page/linen aging 15 days/linen_aging15.php';}
 	else if($page == 'linen_center'){include 'page/linen center/linen_center.php';}
 	else if($page == 'linen_packed'){include 'page/linen to packed/linen_packed.php';}
-	else if($page == 'linen_to_receive'){include 'page/linen to receive/linen.php';}
+	else if($page == 'linen_category'){include 'page/linen category/linen_category.php';}
+	else if($page == 'linen_type'){include 'page/linen type/linen_type.php';}
+	else if($page == 'total_supplier'){include 'page/total supplier/total_supplier.php';}
+	else if($page == 'user'){include 'page/user/user.php';}
+	else if($page == 'role_user'){include 'page/role user/role_user.php';}
 	else if($page == 'total_driver'){include 'page/total driver/total_driver.php';}
 	else if($page == 'total_hotel'){include 'page/total hotel/total_hotel.php';}
 	else if($page == 'total_linen'){include 'page/total linen/total_linen.php';}

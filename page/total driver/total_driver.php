@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 3)
+if($public_id_jabatan == 2 || $public_id_jabatan == 3 || $public_id_jabatan == 4 || $public_id_jabatan == 5 || $public_id_jabatan == 6)
 
 {
 
@@ -13,7 +13,7 @@ if($public_id_jabatan == 3)
         <div class="card-header">
           <h3 class="card-title"><b> DATA DRIVER </b></h3>
 
-          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ?<?php if($public_id_jabatan != 2){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
+          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ><i class="fa fa-plus-circle"></i> Tambah data </button>
 
         </div><br>
         <!-- /.box-header -->
@@ -21,42 +21,44 @@ if($public_id_jabatan == 3)
           <table id="example1" class="table table-bordered table-hover">
             <thead>
 		            <tr>
-									<td >No</td>
-									<td >First name</td>
-									<td >Last name</td>
-									<td >Gender</td>
-									<td >Phone</td>
-									<td >Action</td>
-								</tr>
+						<td >No</td>
+						<td >Driver id</td>
+						<td >First name</td>
+						<td >Last name</td>
+						<td >Gender</td>
+						<td >Phone</td>
+						<td >Action</td>
+					</tr>
             </thead>
             <tbody>
-            	<?php $no2=0;
-									$query = "SELECT * from tb_driver
-									inner join tb_jabatan on tb_driver.id_jabatan = tb_jabatan.id_jabatan
-									where id_driver order by id_driver ASC";
-									$result = mysqli_query($conn, $query);
-									while($row = mysqli_fetch_assoc($result)) 
-							{
+			<?php $no2=0;
+					$query = "SELECT * from tb_driver
+					inner join tb_jabatan on tb_driver.id_jabatan = tb_jabatan.id_jabatan
+					where id_driver order by id_driver ASC";
+					$result = mysqli_query($conn, $query);
+					while($row = mysqli_fetch_assoc($result)) 
+			{
 
-								$no2++;
-								?><tr><?php
-									?><td align="center"><?=$no2?></td><?php
-									?><td><?=$row['first_name'] ?></td><?php
-									?><td><?=$row['last_name'] ?></td><?php
-									?><td><?=$row['gender'] ?></td><?php
-									?><td><?=$row['phone'] ?></td><?php
-									
-									?><td align="center"> 
+				$no2++;
+				?><tr><?php
+					?><td align="center"><?=$no2?></td><?php
+					?><td><?=$row['driver_id'] ?></td><?php
+					?><td><?=$row['first_name'] ?></td><?php
+					?><td><?=$row['last_name'] ?></td><?php
+					?><td><?=$row['gender'] ?></td><?php
+					?><td><?=$row['phone'] ?></td><?php
+					
+					?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_driver']?>','<?=$row['first_name']?>', '<?=$row['last_name']?>', '<?=$row['gender']?>', '<?=$row['phone']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+							<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_driver']?>', '<?=$row['driver_id']?>','<?=$row['first_name']?>', '<?=$row['last_name']?>', '<?=$row['gender']?>', '<?=$row['phone']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
 
-											<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_driver']?>','<?=$row['first_name']?>', '<?=$row['last_name']?>', '<?=$row['gender']?>', '<?=$row['phone']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
-									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_driver']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
-									</td>
-								</tr><?php
-							} $box2 = $no2;
-						?>
+							<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_driver']?>', '<?=$row['driver_id']?>', '<?=$row['first_name']?>', '<?=$row['last_name']?>', '<?=$row['gender']?>', '<?=$row['phone']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+					
+							<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_driver']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+					</td>
+				</tr><?php
+			} $box2 = $no2;
+		?>
            </tbody>
           </table>
           </div>
@@ -80,6 +82,8 @@ if($public_id_jabatan == 3)
 	  <div class="modal-body row">
 	  
 		  <input type="hidden" id="id_driver" value="">
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Driver id</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="driver_id" id="driver_id" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">First name</div>
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="first_name" id="first_name" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Last name</div>
@@ -104,6 +108,7 @@ var token = document.querySelector("meta[property='rtoken']").getAttribute("cont
 
 $('#btn_save').on('click', function (e) {
 	var id_driver = $('#id_driver').val(); 
+	var driver_id = $('#driver_id').val(); 
 	var first_name = $('#first_name').val(); 
 	var last_name = $('#last_name').val();
 	var gender = $('#gender').val();
@@ -111,13 +116,13 @@ $('#btn_save').on('click', function (e) {
 
 	if(id_driver == '')
 	{
-		if(first_name == "" || last_name == "" || gender == "" || phone == "" )
+		if(driver_id == "" || first_name == "" || last_name == "" || gender == "" || phone == "" )
 		{
 			swal({icon: 'error',title: 'Oops...',text: "Mohon isi semua data!",})
 		}
 		else
 		{	
-			$.post("func/func_administrator.php",{token:token, id_driver:'', first_name:first_name, last_name:last_name, gender:gender, phone:phone, kode:'driver'},
+			$.post("func/func_administrator.php",{token:token, id_driver:'', driver_id:driver_id, first_name:first_name, last_name:last_name, gender:gender, phone:phone, kode:'driver'},
 			function(data)
 			{
 				if(data == 1)
@@ -133,7 +138,7 @@ $('#btn_save').on('click', function (e) {
 	}
 		else
 	{
-			$.post("func/func_administrator.php",{token:token, id_driver:id_driver, first_name:first_name, last_name:last_name, gender:gender, phone:phone,  kode:'driver'},
+			$.post("func/func_administrator.php",{token:token, id_driver:id_driver, driver_id:driver_id, first_name:first_name, last_name:last_name, gender:gender, phone:phone,  kode:'driver'},
 		function(data){
 			if(data == 1)
 			{				
@@ -179,8 +184,9 @@ function ShowAdd2(){
 	$("#Modal2").modal('show');
 }
 
-function Editdata(id_driver, first_name, last_name, gender, phone){
+function Editdata(id_driver, driver_id, first_name, last_name, gender, phone){
 	$('#id_driver').val(id_driver);
+		$('#driver_id').val(driver_id);
 	$('#first_name').val(first_name);
 	$('#last_name').val(last_name);
 	$('#gender').val(gender);
@@ -189,8 +195,9 @@ function Editdata(id_driver, first_name, last_name, gender, phone){
 	$("#Modal2").modal('show');
 }
 
-function Lihatdata(id_driver, first_name, last_name, gender, phone){
+function Lihatdata(id_driver, driver_id, first_name, last_name, gender, phone){
 	$('#id_driver').val(id_driver);
+	$('#driver_id').val(driver_id);
 	$('#first_name').val(first_name);
 	$('#last_name').val(last_name);
 	$('#gender').val(gender);
@@ -223,4 +230,3 @@ else
 <?php
 }
 ?>
-

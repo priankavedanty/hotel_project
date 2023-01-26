@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 3) 
+if($public_id_jabatan == 2 || $public_id_jabatan == 3 || $public_id_jabatan == 4 || $public_id_jabatan == 5 || $public_id_jabatan == 6)
 
 {
 
@@ -14,7 +14,7 @@ if($public_id_jabatan == 3)
         <div class="card-header">
           <h3 class="card-title"><b> DATA REGISTER HISTORY </b></h3>
 
-          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd()" ?<?php if($public_id_jabatan != 3){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
+          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd()" ?<?php if($public_id_jabatan != 3 || $public_id_jabatan != 5){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
 
         </div><br>
         <!-- /.box-header -->
@@ -51,11 +51,9 @@ if($public_id_jabatan == 3)
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Editregister('<?=$row['id_register_history']?>','<?=$row['register_date']?>', '<?=$row['template_code']?>', '<?=$row['template_name']?>','<?=$row['linen_type']?>', '<?=$row['total']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
-
-											<button class="btn btn-success" title="Lihat Data" onclick="Lihatregister('<?=$row['id_register_history']?>','<?=$row['register_date']?>', '<?=$row['template_code']?>', '<?=$row['template_name']?>','<?=$row['linen_type']?>', '<?=$row['total']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihatregister('<?=$row['id_register_history']?>','<?=$row['register_date']?>', '<?=$row['template_code']?>', '<?=$row['template_name']?>','<?=$row['linen_type']?>', '<?=$row['total']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 3 || $public_id_jabatan != 5){ print "disabled";}?>></i></button>
 									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_register_history']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
+											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_register_history']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 3 || $public_id_jabatan != 5){ print "disabled";}?>></i></button>
 									</td>
 								</tr><?php
 							} $box1 = $no;
@@ -159,7 +157,7 @@ $('#btn_save').on('click', function (e) {
 	}
 });
 
-function Hapusmenu(id){
+function Hapusmenu(id_register_history){
 	swal({
 	  title: "",
 	  text: "Yakin ingin menghapus register history ini?",
@@ -169,11 +167,11 @@ function Hapusmenu(id){
 		})
 		.then(willConfirm => {
 		  if (willConfirm) {
-		   	$.post("func/func_administrator.php",{token:token, id_register_history:id, kode:'del_register_ history'},
+		   	$.post("func/func_administrator.php",{token:token, id_register_history:id_register_history, kode:'del_history'},
 				function(data){
 				if(data == 1)
 				{				
-					swal({text: "Laundry berhasil dihapus!",icon: 'success',}).then((result) => {window.location.reload();})
+					swal({text: "Data register history berhasil dihapus!",icon: 'success',}).then((result) => {window.location.reload();})
 				}
 				else
 				{
@@ -189,16 +187,6 @@ function ShowAdd(){
 	$("#Modal").modal('show');
 }
 
-function Editregister(id_register_history, register_date, template_code, template_name, linen_type, total){
-	$('#id_register_history').val(id_register_history);
-	$('#register_date').val(register_date);
-	$('#template_code').val(template_code);
-	$('#template_name').val(template_name);
-	$('#linen_type').val(linen_type);
-	$('#total').val(total);
-	$("#judul").html("Edit Menu ");
-	$("#Modal").modal('show');
-}
 
 function Lihatregister(id_register_history, register_date, template_code, template_name, linen_type, total){
 	$('#id_register_history').val(id_register_history);

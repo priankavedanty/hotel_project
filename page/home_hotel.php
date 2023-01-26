@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 2)
+if($public_id_jabatan == 8)
 {
 
 ?>
@@ -63,7 +63,7 @@ if($public_id_jabatan == 2)
 
         <div class="info-box-content">
           <span class="info-box-text">DISCARD LINEN</span>
-          <a href="index.php?h=discard_linen">More info</a>
+          <a href="index.php?h=discard">More info</a>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -76,7 +76,7 @@ if($public_id_jabatan == 2)
 
         <div class="info-box-content">
           <span class="info-box-text">LINEN TO RECEIVE</span>
-          <a href="index.php?h=linen">More info</a>
+          <a href="index.php?h=linen_receive">More info</a>
         </div>
         <!-- /.info-box-content -->
       </div>

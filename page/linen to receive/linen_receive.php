@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 2)
+if($public_id_jabatan == 3 || $public_id_jabatan == 8)
 
 {
 

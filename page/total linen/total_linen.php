@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 3)
+if($public_id_jabatan == 2 || $public_id_jabatan == 3)
 
 {
 
@@ -13,7 +13,7 @@ if($public_id_jabatan == 3)
         <div class="card-header">
           <h3 class="card-title"><b> DATA LINEN </b></h3>
 
-          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ?<?php if($public_id_jabatan != 2){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
+          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd2()" ?<?php if($public_id_jabatan != 2 || $public_id_jabatan != 3){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
 
         </div><br>
         <!-- /.box-header -->
@@ -25,10 +25,9 @@ if($public_id_jabatan == 3)
 									<td >Tag id</td>
 									<td >Name</td>
 									<td >Size</td>
-									<td >Price</td>
 									<td >Hotel</td>
 									<td >Color</td>
-                                    <td >Linen code</td>
+                  <td >Linen code</td>
 									<td >Linen type</td>
 									<td >Template</td>
 									<td >Supplier</td>
@@ -49,12 +48,11 @@ if($public_id_jabatan == 3)
 								?><tr><?php
 									?><td align="center"><?=$no2?></td><?php
 									?><td><?=$row['tag_id'] ?></td><?php
-									?><td><?=$row['name'] ?></td><?php
+									?><td><?=$row['linen_name'] ?></td><?php
 									?><td><?=$row['size'] ?></td><?php
-									?><td><?=$row['price'] ?></td><?php
-									?><td><?=$row['hotel'] ?></td><?php
+									?><td><?=$row['hotel_name'] ?></td><?php
 									?><td><?=$row['color']?></td><?php
-                                    ?><td><?=$row['linen_code'] ?></td><?php
+                  ?><td><?=$row['linen_code'] ?></td><?php
 									?><td><?=$row['linen_type'] ?></td><?php
 									?><td><?=$row['template'] ?></td><?php
 									?><td><?=$row['supplier'] ?></td><?php
@@ -62,11 +60,11 @@ if($public_id_jabatan == 3)
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_linen']?>','<?=$row['tag_id']?>', '<?=$row['name']?>', '<?=$row['size']?>', '<?=$row['price']?>', '<?=$row['hotel']?>', '<?=$row['color']?>', '<?=$row['linen_code']?>', '<?=$row['linen_type']?>', '<?=$row['template']?>', '<?=$row['supplier']?>', '<?=$row['linen_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-warning" title="Edit Data" onclick="Editdata('<?=$row['id_linen']?>','<?=$row['tag_id']?>', '<?=$row['linen_name']?>', '<?=$row['size']?>',  '<?=$row['hotel_name']?>', '<?=$row['color']?>', '<?=$row['linen_code']?>', '<?=$row['linen_type']?>', '<?=$row['template']?>', '<?=$row['supplier']?>', '<?=$row['linen_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2 || $public_id_jabatan != 3){ print "disabled";}?>></i></button>
 
-											<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_linen']?>','<?=$row['tag_id']?>', '<?=$row['name']?>', '<?=$row['size']?>', '<?=$row['price']?>', '<?=$row['hotel']?>', '<?=$row['color']?>', '<?=$row['linen_code']?>', '<?=$row['linen_type']?>', '<?=$row['template']?>', '<?=$row['supplier']?>', '<?=$row['linen_status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihatdata('<?=$row['id_linen']?>','<?=$row['tag_id']?>', '<?=$row['linen_name']?>', '<?=$row['size']?>',  '<?=$row['hotel_name']?>', '<?=$row['color']?>', '<?=$row['linen_code']?>', '<?=$row['linen_type']?>', '<?=$row['template']?>', '<?=$row['supplier']?>', '<?=$row['linen_status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 2 || $public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_linen']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-danger" title="Hapus Data" onclick="Hapus('<?=$row['id_linen']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2 || $public_id_jabatan != 3){ print "disabled";}?>></i></button>
 									</td>
 								</tr><?php
 							} $box2 = $no2;
@@ -96,14 +94,12 @@ if($public_id_jabatan == 3)
 		  <input type="hidden" id="id_linen" value="">
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Tag id</div>
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="tag_id" id="tag_id" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Name</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="name" id="name" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Linen name</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="linen_name" id="linen_name" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Size</div>
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="size" id="size" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Price</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="price" id="price" class="form-control"/></div>
-		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel</div>
-		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel" id="hotel" class="form-control"/></div>
+		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Hotel name</div>
+		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="hotel_name" id="hotel_name" class="form-control"/></div>
 		  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Color</div>
 		  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="padding-top:3px;"><input type="text" name="color" id="color" class="form-control"/></div>
           <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="padding-top:8px;" align="right">Linen code</div>
@@ -133,12 +129,11 @@ var token = document.querySelector("meta[property='rtoken']").getAttribute("cont
 $('#btn_save').on('click', function (e) {
 	var id_linen = $('#id_linen').val(); 
 	var tag_id = $('#tag_id').val(); 
-	var name = $('#name').val();
+	var linen_name = $('#linen_name').val();
 	var size = $('#size').val();
-	var price = $('#price').val();
-	var hotel = $('#hotel').val();
+	var hotel_name = $('#hotel_name').val();
 	var color = $('#color').val();
-    var linen_code = $('#linen_code').val();
+  var linen_code = $('#linen_code').val();
 	var linen_type = $('#linen_type').val();
 	var template = $('#template').val();
 	var supplier = $('#supplier').val();
@@ -146,13 +141,13 @@ $('#btn_save').on('click', function (e) {
 
 	if(id_linen == '')
 	{
-		if(tag_id == "" || name == "" || size == "" || price == "" || hotel == "" || color == "" || linen_code == "" || linen_type == "" || template == "" || supplier == "" || linen_status == "" )
+		if(tag_id == "" || linen_name == "" || size == "" || hotel_name == "" || color == "" || linen_code == "" || linen_type == "" || template == "" || supplier == "" || linen_status == "" )
 		{
 			swal({icon: 'error',title: 'Oops...',text: "Mohon isi semua data!",})
 		}
 		else
 		{	
-			$.post("func/func_administrator.php",{token:token, id_linen:'', tag_id:tag_id, name:name, size:size, price:price, hotel:hotel, color:color, linen_code:linen_code, linen_type:linen_type, template:template, supplier:supplier, linen_status:linen_status, kode:'linen'},
+			$.post("func/func_administrator.php",{token:token, id_linen:'', tag_id:tag_id, linen_name:linen_name, size:size, hotel_name:hotel_name, color:color, linen_code:linen_code, linen_type:linen_type, template:template, supplier:supplier, linen_status:linen_status, kode:'linen'},
 			function(data)
 			{
 				if(data == 1)
@@ -168,7 +163,7 @@ $('#btn_save').on('click', function (e) {
 	}
 		else
 	{
-			$.post("func/func_administrator.php",{token:token, id_linen:id_linen, tag_id:tag_id, name:name, size:size, price:price, hotel:hotel, color:color, linen_code:linen_code, linen_type:linen_type, template:template, supplier:supplier, linen_status:linen_status, kode:'linen'},
+			$.post("func/func_administrator.php",{token:token, id_linen:id_linen, tag_id:tag_id, linen_name:linen_name, size:size, hotel_name:hotel_name, color:color, linen_code:linen_code, linen_type:linen_type, template:template, supplier:supplier, linen_status:linen_status, kode:'linen'},
 		function(data){
 			if(data == 1)
 			{				
@@ -214,13 +209,12 @@ function ShowAdd2(){
 	$("#Modal2").modal('show');
 }
 
-function Editdata(id_linen, tag_id, name, size, price, hotel, color, linen_code, linen_type, template, supplier, linen_status){
+function Editdata(id_linen, tag_id, linen_name, size, hotel_name, color, linen_code, linen_type, template, supplier, linen_status){
 	$('#id_linen').val(id_linen);
 	$('#tag_id').val(tag_id);
-	$('#name').val(name);
+	$('#linen_name').val(linen_name);
 	$('#size').val(size);
-	$('#price').val(price);
-	$('#hotel').val(hotel);
+	$('#hotel_name').val(hotel_name);
 	$('#color').val(color);
     $('#linen_code').val(linen_code);
 	$('#linen_type').val(linen_type);
@@ -231,13 +225,12 @@ function Editdata(id_linen, tag_id, name, size, price, hotel, color, linen_code,
 	$("#Modal2").modal('show');
 }
 
-function Lihatdata(id_linen, tag_id, name, size, price, hotel, color, linen_code, linen_type, template, supplier, linen_status){
+function Lihatdata(id_linen, tag_id, linen_name, size, hotel_name, color, linen_code, linen_type, template, supplier, linen_status){
 	$('#id_linen').val(id_linen);
 	$('#tag_id').val(tag_id);
-	$('#name').val(name);
+	$('#linen_name').val(linen_name);
 	$('#size').val(size);
-	$('#price').val(price);
-	$('#hotel').val(hotel);
+	$('#hotel_name').val(hotel_name);
 	$('#color').val(color);
     $('#linen_code').val(linen_code);
 	$('#linen_type').val(linen_type);

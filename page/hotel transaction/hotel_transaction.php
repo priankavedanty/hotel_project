@@ -1,6 +1,6 @@
 <?php
 
-if($public_id_jabatan == 2) 
+if($public_id_jabatan == 8)
 
 {
 
@@ -14,7 +14,7 @@ if($public_id_jabatan == 2)
         <div class="card-header">
           <h3 class="card-title"><b> DATA HOTEL TRANSACTION </b></h3>
 
-          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd()" ?<?php if($public_id_jabatan != 2){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
+          <button class="btn btn-sm btn-primary" style="margin-top: 0px;" onclick="ShowAdd()" ?<?php if($public_id_jabatan != 8){ print "disabled";}?>><i class="fa fa-plus-circle"></i> Tambah data </button>
 
         </div><br>
         <!-- /.box-header -->
@@ -57,11 +57,11 @@ if($public_id_jabatan == 2)
 									
 									?><td align="center"> 
 
-											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-warning" title="Edit Data" onclick="Edithotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-pencil" <?php if($public_id_jabatan != 8){ print "disabled";}?>></i></button>
 
-											<button class="btn btn-success" title="Lihat Data" onclick="Lihathotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 3){ print "disabled";}?>></i></button>
+											<button class="btn btn-success" title="Lihat Data" onclick="Lihathotel('<?=$row['id_hotel_transaction']?>','<?=$row['train_code']?>', '<?=$row['train_date']?>', '<?=$row['hotel_code']?>', '<?=$row['hotel_name']?>', '<?=$row['clean']?>', '<?=$row['soil']?>', '<?=$row['stain']?>', '<?=$row['torn']?>', '<?=$row['tran_status']?>', '<?=$row['delivery_status']?>')" ><i class="fa fa-eye" <?php if($public_id_jabatan != 8){ print "disabled";}?>></i></button>
 									
-											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_hotel_transaction']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 2){ print "disabled";}?>></i></button>
+											<button class="btn btn-danger" title="Hapus Data" onclick="Hapusmenu('<?=$row['id_hotel_transaction']?>')"><i class="fa fa-trash" <?php if($public_id_jabatan != 8){ print "disabled";}?>></i></button>
 									</td>
 								</tr><?php
 							} $box1 = $no;
